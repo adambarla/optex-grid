@@ -1,21 +1,27 @@
 \input makra 
 
-\title Vytvořte tuto stránku \TeX{}em
+\tit Vytvořte tuto stránku \TeX{}em
 
 
+Vaším úkolem je vytvořit zdrojový text pro \TeX{}, po jehož zpracování získáte pokud možno co nejvěrněji tento PDF výstup. Není nutná absolutní věrnost, například odstavce se mohou zalomit jinak. Můžete použít jakýkoli balíček maker nad \TeX{}em, tj. \LaTeX{}, Context, Plain\TeX{}, Op\TeX{}, {\tt luacsplain} či cokoli jiného. Textový obsah tohoto PDF můžete „nabrat myší“ a převést jej do textové podoby, nemusíte to tedy přepisovat znovu. {\it Nám jde hlavně o formu}.
 
-Vaším úkolem je vytvořit zdrojový text pro \TeX{}, po jehož zpracování získáte pokud možno
-co nejvěrněji tento PDF výstup. Není nutná absolutní věrnost, například odstavce se mohou zalo-
-mit jinak. Můžete použít jakýkoli balíček maker nad \TeX{}em, tj. La\TeX{}, Context, Plain\TeX{}, Op\TeX{},
-luacsplain či cokoli jiného. Textový obsah tohoto PDF můžete „nabrat myší“ a převést jej do tex-
-tové podoby, nemusíte to tedy přepisovat znovu. {\it Nám jde hlavně o formu}.
-
-Přidám několik nápověd. Okraje jsou nastaveny 2 cm z každé strany pro papír A4. Velikost
-písma/řádkování je 11/13.5 bodů, odsazení odstavců je nastaveno na 35 bodů. Informaci o rodině
-použitých fontů v PDF souboru zjistíte například pomocí:
-
+Přidám několik nápověd. Okraje jsou nastaveny 2 cm z každé strany pro papír A4. Velikost písma/řádkování je 11/13.5 bodů, odsazení odstavců je nastaveno na 35 bodů. Informaci o rodině použitých fontů v PDF souboru zjistíte například pomocí:
+\medskip
 {\tt pdffonts ukol.pdf}
-
+\medskip
 Sestavte tabulku o počtech studentů FIT v roce 2019 ve studijních programech:
+\bigskip
+\hbox to \hsize{\hfil
+	\table{lccccccc}{\crll \noalign{\smallskip}
+						& \multispan2Bakalářský & \multispan2 Magisterský & \multispan2 Doktorský & {\bf celkem} \cr 
+						& P* 	& K 	& P 	& K 	& P 	& K 	& 		\crl	\noalign{\medskip}
+		Informatika 			& 1683 	& 129 	& 412 	& 0 	& 28 	& 24 	& {\bf 2276} 	\cr
+		{\it Z toho počet žen} 		& 208 	& 18 	& 42 	& 0 	& 2 	& 3 	& 273 		\cr
+		{\it Z toho počet cizinců} 	& 387 	& 21 	& 82 	& 0 	& 1 	& 2 	& 493 		\crll \noalign{\medskip}
+		\multispan8  \hbox {* Poznámka: P \char123\  prezenční forma, K \char123\  kombinovaná forma}  \cr 
+	}
+\hfil}
+\bigskip
+	
 
 \bye

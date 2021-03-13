@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdfcsplain 2021.3.4)  13 MAR 2021 00:18
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdfcsplain 2021.2.25)  13 MAR 2021 19:43
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -7,22 +7,71 @@ entering extended mode
 (./ukol.tex The format: csplain <Mar. 2019>.
 The cs-fonts are preloaded and A4 size implicitly defined.
 The utf8->iso8859-2 re-encoding of Czech+Slovak alphabet activated by encTeX
-(./makra.tex cs hyphenation used (\language=5). \frenchspacing is set on.
+(./makra.tex (/usr/local/texlive/2020/texmf-dist/tex/csplain/opmac/opmac.tex
+This is OPmac (Olsak's Plain macros), version <Apr. 2020>
+\tmpnum=\count28
+\tmpdim=\dimen16
+\iindent=\dimen17
+\ttindent=\dimen18
+\colsep=\dimen19
+\mnoteindent=\dimen20
+\mnotesize=\dimen21
+\titskip=\skip18
+\ptunit=\dimen22
+\fontdim=\dimen23
+(/usr/local/texlive/2020/texmf-dist/tex/csplain/fonts/ams-math.tex
+FONT: AMS math fonts - \mathchardef's prepared, 12 math families preloaded.
+\ptmunit=\dimen24
+)
+The \^, \`, \', \v, \" and \r expands to characters by ISO-8859-2.
+\reffile=\write0
+\testin=\read0
+\chapnum=\count29
+\secnum=\count30
+\seccnum=\count31
+\nonumnum=\count32
+\remskipamount=\skip19
+\tnum=\count33
+\fnum=\count34
+\dnum=\count35
+\itemnum=\count36
+\mullines=\count37
+\oulnum=\count38
+\ttline=\count39
+\viline=\count40
+\vifile=\read1
+\tabdata=\toks12
+\colnum=\count41
+\drulewidth=\dimen25
+\picwidth=\dimen26
+\picheight=\dimen27
+\fnotenum=\count42
+\fnotenumlocal=\count43
+\mnotenum=\count44
+\mnoteskip=\dimen28
+\auxfile=\write1
+\bibnum=\count45
+\bibmark=\toks13
+\lastcitenum=\count46
+\lastpage=\count47
+\pgwidth=\dimen29
+\pgheight=\dimen30
+\shiftoffset=\dimen31
+)
+cs hyphenation used (\language=5). \frenchspacing is set on.
 (/usr/local/texlive/2020/texmf-dist/tex/csplain/fonts/cs-schola.tex
 (/usr/local/texlive/2020/texmf-dist/tex/csplain/fonts/ff-mac.tex)
 FONT: TG Schola - {\caps } {\rm \bf \it \bi } +TX
 (/usr/local/texlive/2020/texmf-dist/tex/csplain/fonts/chars-8z.tex)
 (/usr/local/texlive/2020/texmf-dist/tex/csplain/fonts/tx-math.tex
-FONT: TX math fonts - \mathchardef's prepared, 14 math families preloaded.
-\ptmunit=\dimen16
-)))
+FONT: TX math fonts - \mathchardef's prepared, 14 math families preloaded.)))
 [1{/usr/local/texlive/2020/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] ){/us
 r/local/texlive/2020/texmf-dist/fonts/enc/dvips/tex-gyre/q-cs.enc}</usr/local/t
 exlive/2020/texmf-dist/fonts/type1/public/cs/cstt10.pfb></usr/local/texlive/202
 0/texmf-dist/fonts/type1/public/tex-gyre/qcsb.pfb></usr/local/texlive/2020/texm
 f-dist/fonts/type1/public/tex-gyre/qcsr.pfb></usr/local/texlive/2020/texmf-dist
 /fonts/type1/public/tex-gyre/qcsri.pfb>
-Output written on ukol.pdf (1 page, 75374 bytes).
+Output written on ukol.pdf (1 page, 79986 bytes).
 PDF statistics:
  25 PDF objects out of 1000 (max. 8388607)
  17 compressed objects within 1 object stream
