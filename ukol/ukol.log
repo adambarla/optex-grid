@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdfcsplain 2021.2.25)  13 MAR 2021 19:43
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdfcsplain 2021.2.25)  17 MAR 2021 23:31
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -57,24 +57,181 @@ The \^, \`, \', \v, \" and \r expands to characters by ISO-8859-2.
 \pgwidth=\dimen29
 \pgheight=\dimen30
 \shiftoffset=\dimen31
-)
-cs hyphenation used (\language=5). \frenchspacing is set on.
+ (./ukol.ref)
+\openout0 = `ukol.ref'.
+
+) cs hyphenation used (\language=5). \frenchspacing is set on.
 (/usr/local/texlive/2020/texmf-dist/tex/csplain/fonts/cs-schola.tex
 (/usr/local/texlive/2020/texmf-dist/tex/csplain/fonts/ff-mac.tex)
 FONT: TG Schola - {\caps } {\rm \bf \it \bi } +TX
 (/usr/local/texlive/2020/texmf-dist/tex/csplain/fonts/chars-8z.tex)
 (/usr/local/texlive/2020/texmf-dist/tex/csplain/fonts/tx-math.tex
-FONT: TX math fonts - \mathchardef's prepared, 14 math families preloaded.)))
+FONT: TX math fonts - \mathchardef's prepared, 14 math families preloaded.))
+\ptem=\dimen32
+\Capsize=\dimen33
+\Capabove=\dimen34
+\Capafter=\dimen35
+)
+Underfull \hbox (badness 1371) in paragraph at lines 32--32
+\tenrm Zkuste vytvořit tři sloupce,
+
+\hbox(8.04099+2.26599)x147.95424, glue set 2.39427
+.\tenrm Z
+.\tenrm k
+.\tenrm u
+.\tenrm s
+.\kern-0.11002
+.\tenrm t
+.\kern0.055
+.\tenrm e
+.\glue 3.058 plus 1.52899 minus 1.02298
+.\tenrm v
+.\tenrm y
+.\tenrm t
+.\tenrm v
+.\kern-0.27501
+.\tenrm o
+.\tenrm ř
+.\tenrm i
+.\tenrm t
+.\glue 3.058 plus 1.52899 minus 1.02298
+.\tenrm t
+.\tenrm ř
+.\tenrm i
+.\glue 3.058 plus 1.52899 minus 1.02298
+.\tenrm s
+.\tenrm l
+.\tenrm o
+.\tenrm u
+.\tenrm p
+.\tenrm c
+.\tenrm e
+.etc.
+
+
+Underfull \hbox (badness 1178) in paragraph at lines 32--32
+\tenrm které jsou vertikálně umís-
+
+\hbox(8.04099+2.222)x147.95424, glue set 2.27676
+.\tenrm k
+.\tenrm t
+.\kern0.055
+.\tenrm e
+.\tenrm r
+.\tenrm é
+.\glue 3.058 plus 1.52899 minus 1.02298
+.\tenrm j
+.\tenrm s
+.\tenrm o
+.\tenrm u
+.\glue 3.058 plus 1.52899 minus 1.02298
+.\tenrm v
+.\kern-0.27501
+.\tenrm e
+.\tenrm r
+.\kern0.21999
+.\tenrm t
+.\tenrm i
+.\tenrm k
+.\tenrm á
+.\tenrm l
+.\tenrm n
+.\tenrm ě
+.\glue 3.058 plus 1.52899 minus 1.02298
+.\tenrm u
+.\tenrm m
+.\tenrm í
+.\tenrm s
+.\discretionary
+.etc.
+
+
+Underfull \hbox (badness 2409) in paragraph at lines 32--32
+\tenrm těny tak, že mají společně
+
+\hbox(8.04099+2.26599)x147.95424, glue set 2.88922
+.\tenrm t
+.\kern0.055
+.\tenrm ě
+.\tenrm n
+.\kern-0.49501
+.\tenrm y
+.\glue 3.058 plus 1.52899 minus 1.02298
+.\tenrm t
+.\kern0.055
+.\tenrm a
+.\tenrm k
+.\tenrm ,
+.\glue 3.058 plus 1.52899 minus 1.02298
+.\tenrm ž
+.\tenrm e
+.\glue 3.058 plus 1.52899 minus 1.02298
+.\tenrm m
+.\tenrm a
+.\kern-0.33002
+.\tenrm j
+.\tenrm í
+.\glue 3.058 plus 1.52899 minus 1.02298
+.\tenrm s
+.\tenrm p
+.\tenrm o
+.\tenrm l
+.\tenrm e
+.\tenrm č
+.\tenrm n
+.\tenrm ě
+.etc.
+
+
+Underfull \hbox (badness 1418) in paragraph at lines 36--36
+\tenrm mená do společného \tentt \hbox\tenrm )
+
+\hbox(8.04099+2.222)x147.95424, glue set 2.42307
+.\tenrm m
+.\tenrm e
+.\tenrm n
+.\tenrm á
+.\glue 3.058 plus 1.52899 minus 1.02298
+.\tenrm d
+.\tenrm o
+.\glue 3.058 plus 1.52899 minus 1.02298
+.\tenrm s
+.\tenrm p
+.\tenrm o
+.\tenrm l
+.\tenrm e
+.\tenrm č
+.\tenrm n
+.\tenrm é
+.\tenrm h
+.\tenrm o
+.\glue 3.058 plus 1.52899 minus 1.02298
+.\tentt \
+.\tentt h
+.\tentt b
+.\tentt o
+.\tentt x
+.\tenrm )
+.\glue(\rightskip) 0.0
+
+l.57 OPmac WARNING: unknown \fnote mark. TeX me again.
 [1{/usr/local/texlive/2020/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] ){/us
-r/local/texlive/2020/texmf-dist/fonts/enc/dvips/tex-gyre/q-cs.enc}</usr/local/t
-exlive/2020/texmf-dist/fonts/type1/public/cs/cstt10.pfb></usr/local/texlive/202
-0/texmf-dist/fonts/type1/public/tex-gyre/qcsb.pfb></usr/local/texlive/2020/texm
-f-dist/fonts/type1/public/tex-gyre/qcsr.pfb></usr/local/texlive/2020/texmf-dist
-/fonts/type1/public/tex-gyre/qcsri.pfb>
-Output written on ukol.pdf (1 page, 79986 bytes).
+r/local/texlive/2020/texmf-dist/fonts/enc/dvips/base/8r.enc}{/usr/local/texlive
+/2020/texmf-dist/fonts/enc/dvips/tex-gyre/q-cs.enc}</usr/local/texlive/2020/tex
+mf-dist/fonts/type1/public/cs/cstt10.pfb></usr/local/texlive/2020/texmf-dist/fo
+nts/type1/public/cs/cstt9.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/p
+ublic/tex-gyre/qcsb.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/
+tex-gyre/qcsr.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/tex-gy
+re/qcsri.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/txfonts/rtx
+mi.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/txfonts/rtxr.pfb>
+</usr/local/texlive/2020/texmf-dist/fonts/type1/public/txfonts/txex.pfb></usr/l
+ocal/texlive/2020/texmf-dist/fonts/type1/public/txfonts/txsy.pfb></usr/local/te
+xlive/2020/texmf-dist/fonts/type1/public/txfonts/txsyb.pfb></usr/local/texlive/
+2020/texmf-dist/fonts/type1/urw/times/utmr8a.pfb>
+Output written on ukol.pdf (1 page, 104346 bytes).
 PDF statistics:
- 25 PDF objects out of 1000 (max. 8388607)
- 17 compressed objects within 1 object stream
+ 55 PDF objects out of 1000 (max. 8388607)
+ 40 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 
