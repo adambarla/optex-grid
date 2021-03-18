@@ -6,11 +6,21 @@
 \typosize[11/13.5]
 \parindent=35pt
 \margins/1 a4 (2,2,2,2)cm
-%\setmathsizes[13.5/10/7] 
+\hyperlinks{}{\Blue} 
 
 \hyphenation {umís-těny stej-nou čas-těji vy-tvoření zna-mená zvět-šené Vy-tvoříte}
 
 \def\seq#1{\nobreak{\tt\char`\\ #1}}
+
+\def\showfonts{\bgroup 
+   \def\wterm##1{\immediate\write16{##1}} 
+   \def\resizefont##1{\wterm{##1= \fontname##1}}\resizeall 
+   \tmpnum=0 \loop 
+      \wterm{\the\tmpnum: \fontname\textfont\tmpnum\space/ 
+                          \fontname\scriptfont\tmpnum\space/ 
+                          \fontname\scriptscriptfont\tmpnum} 
+      \advance\tmpnum by1 \ifnum\tmpnum<16 \repeat 
+   \egroup} 
 
 \def\declCap #1#2{\sxdef{cap:=#1}{#2}}
 \def\Capinsert{\def\leftCapmaterial{}\futurelet\next\CapinsertA}

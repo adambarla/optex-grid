@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdfcsplain 2021.2.25)  17 MAR 2021 23:31
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdfcsplain 2021.3.4)  18 MAR 2021 11:40
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -214,24 +214,26 @@ Underfull \hbox (badness 1418) in paragraph at lines 36--36
 .\tenrm )
 .\glue(\rightskip) 0.0
 
-l.57 OPmac WARNING: unknown \fnote mark. TeX me again.
-[1{/usr/local/texlive/2020/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] ){/us
-r/local/texlive/2020/texmf-dist/fonts/enc/dvips/base/8r.enc}{/usr/local/texlive
-/2020/texmf-dist/fonts/enc/dvips/tex-gyre/q-cs.enc}</usr/local/texlive/2020/tex
-mf-dist/fonts/type1/public/cs/cstt10.pfb></usr/local/texlive/2020/texmf-dist/fo
-nts/type1/public/cs/cstt9.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/p
-ublic/tex-gyre/qcsb.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/
-tex-gyre/qcsr.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/tex-gy
-re/qcsri.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/txfonts/rtx
-mi.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/txfonts/rtxr.pfb>
-</usr/local/texlive/2020/texmf-dist/fonts/type1/public/txfonts/txex.pfb></usr/l
-ocal/texlive/2020/texmf-dist/fonts/type1/public/txfonts/txsy.pfb></usr/local/te
-xlive/2020/texmf-dist/fonts/type1/public/txfonts/txsyb.pfb></usr/local/texlive/
-2020/texmf-dist/fonts/type1/urw/times/utmr8a.pfb>
-Output written on ukol.pdf (1 page, 104346 bytes).
+(/usr/local/texlive/2020/texmf-dist/tex/csplain/opmac/fontfam.tex
+(/usr/local/texlive/2020/texmf-dist/tex/csplain/opmac/fontfam-global.tex))
+(/usr/local/texlive/2020/texmf-dist/tex/csplain/fonts/cs-schola.tex
+FONT: TG Schola - {\caps } {\rm \bf \it \bi } +TX
+(/usr/local/texlive/2020/texmf-dist/tex/csplain/fonts/chars-8z.tex)) [1{/usr/lo
+cal/texlive/2020/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] ){/usr/local/te
+xlive/2020/texmf-dist/fonts/enc/dvips/tex-gyre/q-cs.enc}</usr/local/texlive/202
+0/texmf-dist/fonts/type1/public/cs/cstt10.pfb></usr/local/texlive/2020/texmf-di
+st/fonts/type1/public/cs/cstt9.pfb></usr/local/texlive/2020/texmf-dist/fonts/ty
+pe1/public/tex-gyre/qcsb.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/pu
+blic/tex-gyre/qcsr.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/t
+ex-gyre/qcsri.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/txfont
+s/rtxmi.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/txfonts/rtxr
+.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/txfonts/txex.pfb></
+usr/local/texlive/2020/texmf-dist/fonts/type1/public/txfonts/txsy.pfb></usr/loc
+al/texlive/2020/texmf-dist/fonts/type1/public/txfonts/txsyb.pfb>
+Output written on ukol.pdf (1 page, 101969 bytes).
 PDF statistics:
- 55 PDF objects out of 1000 (max. 8388607)
- 40 compressed objects within 1 object stream
- 0 named destinations out of 1000 (max. 500000)
+ 53 PDF objects out of 1000 (max. 8388607)
+ 39 compressed objects within 1 object stream
+ 1 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 
