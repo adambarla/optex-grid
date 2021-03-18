@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdfcsplain 2021.3.4)  18 MAR 2021 11:40
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdfcsplain 2021.2.25)  18 MAR 2021 13:29
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -72,7 +72,7 @@ FONT: TX math fonts - \mathchardef's prepared, 14 math families preloaded.))
 \Capabove=\dimen34
 \Capafter=\dimen35
 )
-Underfull \hbox (badness 1371) in paragraph at lines 32--32
+Underfull \hbox (badness 1371) in paragraph at lines 31--31
 \tenrm Zkuste vytvořit tři sloupce,
 
 \hbox(8.04099+2.26599)x147.95424, glue set 2.39427
@@ -109,7 +109,7 @@ Underfull \hbox (badness 1371) in paragraph at lines 32--32
 .etc.
 
 
-Underfull \hbox (badness 1178) in paragraph at lines 32--32
+Underfull \hbox (badness 1178) in paragraph at lines 31--31
 \tenrm které jsou vertikálně umís-
 
 \hbox(8.04099+2.222)x147.95424, glue set 2.27676
@@ -146,7 +146,7 @@ Underfull \hbox (badness 1178) in paragraph at lines 32--32
 .etc.
 
 
-Underfull \hbox (badness 2409) in paragraph at lines 32--32
+Underfull \hbox (badness 2409) in paragraph at lines 31--31
 \tenrm těny tak, že mají společně
 
 \hbox(8.04099+2.26599)x147.95424, glue set 2.88922
@@ -183,7 +183,7 @@ Underfull \hbox (badness 2409) in paragraph at lines 32--32
 .etc.
 
 
-Underfull \hbox (badness 1418) in paragraph at lines 36--36
+Underfull \hbox (badness 1418) in paragraph at lines 35--35
 \tenrm mená do společného \tentt \hbox\tenrm )
 
 \hbox(8.04099+2.222)x147.95424, glue set 2.42307
@@ -214,23 +214,18 @@ Underfull \hbox (badness 1418) in paragraph at lines 36--36
 .\tenrm )
 .\glue(\rightskip) 0.0
 
-(/usr/local/texlive/2020/texmf-dist/tex/csplain/opmac/fontfam.tex
-(/usr/local/texlive/2020/texmf-dist/tex/csplain/opmac/fontfam-global.tex))
-(/usr/local/texlive/2020/texmf-dist/tex/csplain/fonts/cs-schola.tex
-FONT: TG Schola - {\caps } {\rm \bf \it \bi } +TX
-(/usr/local/texlive/2020/texmf-dist/tex/csplain/fonts/chars-8z.tex)) [1{/usr/lo
-cal/texlive/2020/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] ){/usr/local/te
-xlive/2020/texmf-dist/fonts/enc/dvips/tex-gyre/q-cs.enc}</usr/local/texlive/202
-0/texmf-dist/fonts/type1/public/cs/cstt10.pfb></usr/local/texlive/2020/texmf-di
-st/fonts/type1/public/cs/cstt9.pfb></usr/local/texlive/2020/texmf-dist/fonts/ty
-pe1/public/tex-gyre/qcsb.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/pu
-blic/tex-gyre/qcsr.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/t
-ex-gyre/qcsri.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/txfont
-s/rtxmi.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/txfonts/rtxr
-.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/txfonts/txex.pfb></
-usr/local/texlive/2020/texmf-dist/fonts/type1/public/txfonts/txsy.pfb></usr/loc
-al/texlive/2020/texmf-dist/fonts/type1/public/txfonts/txsyb.pfb>
-Output written on ukol.pdf (1 page, 101969 bytes).
+[1{/usr/local/texlive/2020/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] ){/us
+r/local/texlive/2020/texmf-dist/fonts/enc/dvips/tex-gyre/q-cs.enc}</usr/local/t
+exlive/2020/texmf-dist/fonts/type1/public/cs/cstt10.pfb></usr/local/texlive/202
+0/texmf-dist/fonts/type1/public/cs/cstt9.pfb></usr/local/texlive/2020/texmf-dis
+t/fonts/type1/public/tex-gyre/qcsb.pfb></usr/local/texlive/2020/texmf-dist/font
+s/type1/public/tex-gyre/qcsr.pfb></usr/local/texlive/2020/texmf-dist/fonts/type
+1/public/tex-gyre/qcsri.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/pub
+lic/txfonts/rtxmi.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/tx
+fonts/rtxr.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/txfonts/t
+xex.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/txfonts/txsy.pfb
+></usr/local/texlive/2020/texmf-dist/fonts/type1/public/txfonts/txsyb.pfb>
+Output written on ukol.pdf (1 page, 101486 bytes).
 PDF statistics:
  53 PDF objects out of 1000 (max. 8388607)
  39 compressed objects within 1 object stream
