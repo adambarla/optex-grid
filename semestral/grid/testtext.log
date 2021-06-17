@@ -1,0 +1,63 @@
+This is LuaTeX, Version 1.13.2 (TeX Live 2021)  (format=optex 2021.5.31)  18 JUN 2021 00:21
+ restricted system commands enabled.
+**testtext.tex
+(./testtext.tex This is OpTeX (Olsak's Plain TeX), version <1.02 Apr.2021>
+(/usr/local/texlive/2021/texmf-dist/tex/optex/base/f-lmfonts.opm
+luaotfload | conf : Root cache directory is "/home/barlaada/.texlive2021/texmf-v
+ar/luatex-cache/generic/names".
+luaotfload | init : Loading fontloader "fontloader-2021-05-20.lua" from kpse-res
+olved path "/usr/local/texlive/2021/texmf-dist/tex/luatex/luaotfload/fontloader-
+2021-05-20.lua".
+"luaotfload@noligature"=\attribute1
+"luaotfload@syllabe"=\attribute2
+luaotfload | init : Context OpenType loader version 3.116
+"luaotfload_color_attribute"=\attribute3
+luaotfload | conf : Root cache directory is "/home/barlaada/.texlive2021/texmf-v
+ar/luatex-cache/generic/names".
+"luaotfload.letterspace_done"=\attribute4
+luaotfload | db : Font names database loaded from /home/barlaada/.texlive2021/te
+xmf-var/luatex-cache/generic/names/luaotfload-names.luc
+FONT: [Latin Modern] -- \LMfonts (TeX Gyre fonts based on Coputer Modern)
+ mods:{\roman \sans \quotset \ttset \ttprop \ttlight \ttcond \upital \dunhill s
+ubmods:\caps \slant \nbold \bolder } vars:{\rm \bf \it \bi \tt } math:{LM}
+Modifiers (selects subfamily):
+ \modreset .. implicit values (serif, bold extended, nocaps)
+ \sans ...... sans serif subfamily
+ \quotset ... quotation subfamily
+ \ttset ..... typewriter subfamily
+ \ttprop .... proportional typewriter-like subfamily
+ \ttlight ... light typewriter subfamily
+ \ttcond .... condensed typewriter subfamily
+ \upital .... upright italic (only \rm )
+ \dunhill ... dunhill roman subfamily (only \rm , \it )
+Sub-modifiers (selects special variants of given subfamily):
+ \caps ...... caps & small caps (available only at limited shapes)
+ \slant ..... slanted (default in some subfamilies)
+ \nbold ..... normal bold (extended bold is default)
+ \bolder .... extended bold
+Note: Text fonts support optical sizes, but LatinModern-Math only for scripts.
+ Use another CM-like family if optical sizes not wanted: \fontfam [NewCM]. 
+MATH-FONT: "[latinmodern-math]" -- unicode math prepared.
+(/usr/local/texlive/2021/texmf-dist/tex/optex/base/unimath-codes.opm
+Uni math codes <2021-04-25>
+(/usr/local/texlive/2021/texmf-dist/tex/optex/base/mathclass.opm)
+(/usr/local/texlive/2021/texmf-dist/tex/optex/base/unimath-table.opm)))
+(./mriezka.tex)
+\h=\dimen292
+\w=\dimen293
+\curr=\dimen294
+ 0.0pt 10.0pt 20.0pt 30.0pt 40.0pt 50.0pt 60.0pt 70.0pt 80.0pt
+90.0pt 100.0pt 110.0pt 120.0pt 130.0pt 140.0pt 150.0pt 160.0pt 170.0pt 180.0pt
+190.0pt 200.0pt 210.0pt 220.0pt 230.0pt 240.0pt 250.0pt 260.0pt 270.0pt
+280.0pt 290.0pt 300.0pt 310.0pt 320.0pt 330.0pt 340.0pt 350.0pt 360.0pt
+370.0pt 380.0pt 390.0pt 400.0pt 410.0pt 420.0pt 430.0pt 440.0pt 450.0pt
+[1{/usr/local/texlive/2021/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
+[2] [3])</usr/local/texlive/2021/texmf-dist/fonts/opentype/public/lm/lmroman10-r
+egular.otf>
+Output written on testtext.pdf (3 pages, 22883 bytes).
+
+PDF statistics: 21 PDF objects out of 1000 (max. 8388607)
+ 12 compressed objects within 1 object stream
+ 0 named destinations out of 1000 (max. 131072)
+ 1 words of extra memory for PDF output out of 10000 (max. 100000000)
+

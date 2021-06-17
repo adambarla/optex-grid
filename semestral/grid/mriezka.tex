@@ -1,0 +1,21 @@
+\def\grid #1 {\dimen0=#1
+\newdimen\h
+\h=\vsize
+\newdimen\w
+\w=\hsize
+\newdimen\curr
+\curr=0pt
+\advance\h\baselineskip
+\vertical
+}
+
+\def\vertical{{\Green\noindent
+    \ifnum\curr<\w
+      \message{\the\curr}%
+      \hskip\curr
+      \hbox to0pt{\vbox to0pt{\vskip-\baselineskip\noindent\vrule height\h\vss}\hss}%
+      \advance\curr\dimen0
+      \vskip-\baselineskip
+      \vertical
+    \fi
+}}
