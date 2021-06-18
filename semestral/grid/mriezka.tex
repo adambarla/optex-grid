@@ -1,60 +1,53 @@
-\def\grid #1, #2, #3, #4, #5, #6 {\_pgbackground={\Green
-  \newdimen\x \x=#1 \newdimen\right \right=#2 \newdimen\left \left=#3
-  \newdimen\y \y=#4 \newdimen\top \top=#5 \newdimen\bottom \bottom=#6
-  \newdimen\h \h=\pdfpageheight \advance\h-\top \advance\h-\bottom
-  \newdimen\w \w=\pdfpagewidth \advance\w-\right \advance\w-\left
-  % \message{pdf: \the\w vsize: \the\hsize}%
-  \newdimen\curr \curr=0pt
-  \newcount\linecount \linecount=0
-  \newcount\blockcount \blockcount=0
-  \def\vertical {\noindent
-    \ifnum\curr<\w
-      % \message{\the\curr}%
-      %\message{\the\linecount}%
-      \hbox to0pt{\hskip\right\hskip\curr
-        \newcount\temp \temp=\blockcount \multiply\temp by10
-        \ifnum\linecount =\temp
-          \global\advance\blockcount by1
-          \hbox to0pt{%
-            \vbox to0pt{\vskip\top\vskip-\baselineskip\noindent\hskip2pt\the\linecount\vss}%
-            \hss
-            \newdimen\largerline \largerline=\h \advance\largerline\baselineskip
-            \vbox to0pt{\vskip\top\vskip-\baselineskip\noindent\vrule height\largerline width 0.8pt \vss}%
-            \hss}%
-        \else
-          \vbox to0pt{\vskip\top\noindent\vrule height\h width 0.1pt \vss}%
-        \fi
-        \hss}%
-      \advance\linecount1
-      \advance\curr\x
-      \vertical
-    \fi
-  }%
-  \vertical
-  \curr=0pt
-  \linecount=0
-  \blockcount=0
-  \def\horizontal {\noindent
-    % \message{\the\curr}%
-    % \message{\the\y}%
-    \ifnum\curr<\h
-      \newcount\temp \temp=\blockcount \multiply\temp by10
-      \hbox to0pt{\hskip\right \vbox to0pt{\vskip\top\vskip\curr
-        \ifnum\linecount =\temp
-          \global\advance\blockcount by1
-          \newdimen\largerline \largerline=\w \advance\largerline\baselineskip
-          \hbox to 0pt{\hskip-\baselineskip\vbox to0pt{\hrule width\largerline height 0.8pt\vss}\hss}
-          \noindent\vbox to0pt{\vskip-\baselineskip\vskip2pt\hbox to 0pt{\hss\the\linecount\hskip1pt}\vss}
-        \else
-          \hrule width\w height 0.1pt
-        \fi
-      \vss}\hss}%
-      \advance\linecount1
-      \advance\curr\y
-      \horizontal
-    \fi
-  }%
-  \horizontal
-}}
-
-
+\newdimen\h 
+\newdimen\w 
+\newdimen\curr 
+\newcount\linecount 
+\newcount\blockcount
+%/ horizontal spacing size, vertical spacing size(right margin, top margin,)
+\def\grid#1,#2(#3,#4,#5,#6){% defining implicit parameters
+  \if$#1$ \def\x{1mm} \else \def\x{#1} \fi
+  \if$#2$ \def\y{1mm} \else \def\y{#2} \fi
+  \if$#3$ \def\right{\hoffset} \else \def\right{#3} \fi
+  \if$#4$ \def\top{\voffset} \else \def\top{#4} \fi
+  \if$#5$ \def\w{\hsize} \else \def\w{#5} \fi
+  \if$#6$ \def\h{\vsize} \else \def\h{#6} \fi
+  \_pgbackground={\Green
+    \blockcount=0 \linecount=0 \curr=0pt\vertical
+    \blockcount=0 \linecount=0 \curr=0pt\horizontal}%
+}
+\def\vertical {\noindent
+  \ifnum\curr<\w
+    \newcount\temp \temp=\blockcount \multiply\temp10
+    \vbox to0pt{\vskip\top\hbox to0pt{\hskip\right\hskip\curr
+      \ifnum\linecount =\temp
+        \global\advance\blockcount1
+        \newdimen\largerline \largerline=\h \advance\largerline\baselineskip
+        \vbox to0pt{\vskip-\baselineskip\hbox to0pt{\vrule height\largerline width 0.8pt\hss}\vss}%
+        \hbox to0pt{\hskip2pt\vbox to0pt{\vss\noindent\the\linecount\vskip1pt}\hss}%
+      \else
+        \vrule height\h width 0.1pt
+      \fi
+    \hss}\vss}%
+    \advance\linecount1
+    \advance\curr\x
+    \vertical
+  \fi
+}
+\def\horizontal {\noindent
+  \ifnum\curr<\h
+    \newcount\temp \temp=\blockcount \multiply\temp10
+    \hbox to0pt{\hskip\right \vbox to0pt{\vskip\top\vskip\curr
+      \ifnum\linecount =\temp
+        \global\advance\blockcount1
+        \newdimen\largerline \largerline=\w \advance\largerline\baselineskip
+        \hbox to0pt{\hskip-\baselineskip\vbox to0pt{\hrule width\largerline height 0.8pt\vss}\hss}%
+        \vbox to0pt{\vskip-\baselineskip\vskip2pt\hbox to0pt{\hss\noindent\the\linecount\hskip1pt}\vss}%
+      \else
+        \hrule width\w height 0.1pt
+      \fi
+    \vss}\hss}%
+    \advance\linecount1
+    \advance\curr\y
+    \horizontal
+  \fi
+}
