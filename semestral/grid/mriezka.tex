@@ -7,7 +7,7 @@
   \newdimen\curr \curr=0pt
   \newcount\linecount \linecount=0
   \newcount\blockcount \blockcount=0
-  \def\vertical{{\noindent
+  \def\vertical {\noindent
     \ifnum\curr<\w
       % \message{\the\curr}%
       %\message{\the\linecount}%
@@ -25,12 +25,36 @@
           \vbox to0pt{\vskip\top\noindent\vrule height\h width 0.1pt \vss}%
         \fi
         \hss}%
-      \advance\linecount by1
+      \advance\linecount1
       \advance\curr\x
       \vertical
     \fi
-  }}
+  }%
   \vertical
+  \curr=0pt
+  \linecount=0
+  \blockcount=0
+  \def\horizontal {\noindent
+    % \message{\the\curr}%
+    % \message{\the\y}%
+    \ifnum\curr<\h
+      \newcount\temp \temp=\blockcount \multiply\temp by10
+      \hbox to0pt{\hskip\right \vbox to0pt{\vskip\top\vskip\curr
+        \ifnum\linecount =\temp
+          \global\advance\blockcount by1
+          \newdimen\largerline \largerline=\w \advance\largerline\baselineskip
+          \hbox to 0pt{\hskip-\baselineskip\vbox to0pt{\hrule width\largerline height 0.8pt\vss}\hss}
+          \noindent\vbox to0pt{\vskip-\baselineskip\vskip2pt\hbox to 0pt{\hss\the\linecount\hskip1pt}\vss}
+        \else
+          \hrule width\w height 0.1pt
+        \fi
+      \vss}\hss}%
+      \advance\linecount1
+      \advance\curr\y
+      \horizontal
+    \fi
+  }%
+  \horizontal
 }}
 
 
