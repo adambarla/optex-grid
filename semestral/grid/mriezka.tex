@@ -1,21 +1,36 @@
-\def\grid #1 {\dimen0=#1
-\newdimen\h
-\h=\vsize
-\newdimen\w
-\w=\hsize
-\newdimen\curr
-\curr=0pt
-\advance\h\baselineskip
-\vertical
-}
-
-\def\vertical{{\Green\noindent
+\def\grid #1, #2, #3, #4, #5, #6 {\_pgbackground={\Green
+  \newdimen\x \x=#1 \newdimen\right \right=#2 \newdimen\left \left=#3
+  \newdimen\y \y=#4 \newdimen\top \top=#5 \newdimen\bottom \bottom=#6
+  \newdimen\h \h=\pdfpageheight \advance\h-\top \advance\h-\bottom
+  \newdimen\w \w=\pdfpagewidth \advance\w-\right \advance\w-\left
+  % \message{pdf: \the\w vsize: \the\hsize}%
+  \newdimen\curr \curr=0pt
+  \newcount\linecount \linecount=0
+  \newcount\blockcount \blockcount=0
+  \def\vertical{{\noindent
     \ifnum\curr<\w
-      \message{\the\curr}%
-      \hskip\curr
-      \hbox to0pt{\vbox to0pt{\vskip-\baselineskip\noindent\vrule height\h\vss}\hss}%
-      \advance\curr\dimen0
-      \vskip-\baselineskip
+      % \message{\the\curr}%
+      %\message{\the\linecount}%
+      \hbox to0pt{\hskip\right\hskip\curr
+        \newcount\temp \temp=\blockcount \multiply\temp by10
+        \ifnum\linecount =\temp
+          \global\advance\blockcount by1
+          \hbox to0pt{%
+            \vbox to0pt{\vskip\top\vskip-\baselineskip\noindent\hskip2pt\the\linecount\vss}%
+            \hss
+            \newdimen\largerline \largerline=\h \advance\largerline\baselineskip
+            \vbox to0pt{\vskip\top\vskip-\baselineskip\noindent\vrule height\largerline width 0.8pt \vss}%
+            \hss}%
+        \else
+          \vbox to0pt{\vskip\top\noindent\vrule height\h width 0.1pt \vss}%
+        \fi
+        \hss}%
+      \advance\linecount by1
+      \advance\curr\x
       \vertical
     \fi
+  }}
+  \vertical
 }}
+
+
