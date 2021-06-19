@@ -1,3 +1,3 @@
 # TEX
 
-files from TEX class
+files from BI-TEX class
