@@ -6,11 +6,11 @@
 \title {Mriežka na pozadí dokumentu k meraniu sadzby v rôznych jednotkách}
 \author {Adam Barla}
 \date {LS 2020/2021}
-\abstractEN {This document describes use and development of \OpTeX{} macro. This macro creates a grid on the background of each page of the document. The size and placement of the grid can be defined by the user. Grid keeps the Typesetting of the original document. It is designed to help with measuring a relative and the absolute positon of texts, pictures, charts and other elements on page.}
+\abstractEN {This document describes use and development of \OpTeX{} macro. This macro creates a grid on the background of each page of the document. The size and placement of the grid can be defined by the user. Grid keeps the Typesetting of the original document. It is designed to help with measuring a relative and the absolute positon of texts, pictures, charts and other elements on the page.}
 \abstractSK {Tento dokument popisuje použitie a vývoj makra pre \OpTeX{}. Toto makro vytvorí na pozadí každej strany dokumentu mriežku ľubovoľnej velkosti s ľubobolným umiestnením. Mriežka nezasahuje do pôvodnej sadzby dokumentu. Pomocou tejto mriežky je jednoduché odčítať vzájomnú ale aj absolutnú polohu všetkých textov, obrázkov, tabuliek a iných elementov na stránke.}
 % \declaration {Prohlašuji, že jsem se neflákal.}
 \makefront
-\draft
+
 \chap Úvod
 Program \TeX{} je používaný v akademickom prostredí najmä vďaka kvalite matematickej sadzby. Vyniká však aj v mnohých iných oblastiach. Jednou z nich je napríklad algoritmus riadkových zlomov. K tejto prvotriednosti prispieva to, že \TeX{} spracúva celý zdrojový text naraz. Autor tak vidí finálnu sadzbu až po dobehnutí programu. Pri ladení konečného vzhľadu textu je teda potrebné opätovne spúšťať program a hladať prípadné chyby. To môže byť spočiatku na nového užívateľa priveľa. Hlavne ak je zvyknutý na textové editory, ako napríklad MS Word, v ktorých sú zmeny viditeľné ihneď. Táto práca popisuje makro pre \OpTeX{} určené ne hľadanie príčin nesprávneho umiestnenia sadzby, prípadne zisťovania presnej pozície textu v dokumente.
 
@@ -48,7 +48,7 @@ Pri definícii parametrov môžte nechať niektoré z nich aj prázdne a tým bu
 \sec Možné vylepšenia
 Povedal by som že makro má dva nedostaky. Oba sa vyskytujú ib pri špecifickom využití.
 
-\secc Pozadie
+\secc[background] Pozadie
 Pri implementácii je využitý token list z \OpTeX{}u "\pgbackground". To znamená že ak by sme chceli určiť polohu niečoho na pozadí, definovanom práve týmto zoznamom, nebude to možné. Podľa poradia definícií bude na pozadí buď mriežka alebo pôvodné pozadie. Nikdy nie oba naraz. 
 
 Ako možné vylepšenie by makro mohlo definovať vlastný token list, ktorý by sa zobrazoval rovnako ako "\pgbackground".
@@ -59,16 +59,103 @@ Ako náhle zvolíme ľavé a vrchné odsadenia ako nulové prídeme o číslovan
 Jedným z riešení je výpis číslovania na všetky štyri strany. To však nemení viditeľnosť číslovania v ukážke \ref[whole]. Ďalej by bolo možné vypisovať číslovanie malým písmom dovnútra mriežky. To by ale potencionálne znemožnilo odčítanie presnej pozície, kedže by sa texty prekrývali.
 
 \chap Implementácia
-Táto kapitola sa venuje postupu akým som makro vytvoril. Popíšem čo ma viedlo k rozhodnutiam, ktoré som spravil. 
-\sec Predpoklady
-Na začiatok si treba ozrejmiť čo by malo makro robiť. Preto zhrniem predpoklady, ktoré som pri tvorbe mal.Makro by malo byť jednoduché na použitie. To 
-\sec Výška a šírka
+Táto kapitola sa venuje postupu akým som makro vytvoril. Popíšem čo ma viedlo k rozhodnutiam, ktoré som spravil. Na začiatok si treba ozrejmiť čo by malo makro robiť. Preto zhrniem predpoklady, ktoré som pri tvorbe mal. 
+\begitems
+* jednoduché na použitie
+* nastaviteľné parametre
+* nezasahovať do textu
+* prehľadné
+\enditems
+\sec Rozhranie
+Kedže mi išlo o jednoduchosť stanovil som si že mriežka bude generovaná jedným príkazom s parametrami. Tých som zvolil 6. 
+
+Najdôložitejšie je nastavenie veľkosti políčok v mriežke, kedže bez tejto vlastnosti je mriežka zbytočná. To zariadia prvé dva parametre. Rovnako dôležitá je pozícia počiatku mriežky, vďaka ktorému môžme určiť vzdialenosti od ľubovolného miesta na strane jednoducho. Keby bol počiatok fixný museli  by sme určiť vzdialenosť dvoch bodov od povedzme kraju papiera a potom tieto vzdialenosti odčítať. Na to nám treba ďalšie dva parametre.Posledné dva sú tam možno s viac estetického hladiska. Mriežka by totiž mohla vždy siahať až po koniec papiera. Pre lepšiu viditeľnosť som ale zvolil ako nastaviteľnú aj veľkosť mriežky.
+Definícia makra teda bude vyzerať takto:
 \begtt
-\ifnum\curr<\w
+\def\grid#1,#2(#3,#4,#5,#6)
 \endtt
+\sec Implicitné hodnoty parametrov
+Parametre by mali mať nejakú implicitnú hodnotu pre jednoduchšie zaobchádzanie. Všetky parametre definujem pre použitie v pomocných markrách. Výšku a šírku budem musieť číselne porovnávať kvôli dodržaniu veľkosti mriežky. Preto pre ne definujem premenné:
+\begtt
+\newdimen\h 
+\newdimen\w 
+\endtt
+Ostatné môžem definovať pomocou "\def".
 
+Rozpoznanie prázdneho parametra robím s predpokladom, že v parametri nikdy nebude znak "$". Čo je dobrý predpoklad, kedže "$" začína matematickú sadzbu. Ak je parameter prázdny vyústi podmienka "\if$#1$" po expanzii do rovnosti. Tam definujem implicitnú hodnotu. Pre všetky parametre vyzerajú podmientky takto.
+\begtt
+  \if$#1$ \def\x{1mm} \else \def\x{#1} \fi
+  \if$#2$ \def\y{1mm} \else \def\y{#2} \fi
+  \if$#3$ \def\left{\hoffset} \else \def\left{#3} \fi
+  \if$#4$ \def\top{\voffset} \else \def\top{#4} \fi
+  \if$#5$ \w=\hsize \else \w=#5 \fi
+  \if$#6$ \h=\vsize \else \h=#6 \fi
+\endtt
+\sec Pomocné markrá
+Definujem si dve pomocné makrá pre horizontálne a vertikálne čiary. Každé z nich vypíše čiaru a zavolá samého seba. Chcem aby makro prestalo volať samé seba keď vypísalo toľko čiar s definovaným rozostupom "\x" prípadne "\y" pre vertikálne respektíve horizontálne čiary, že ďalším zavolaním by už presiahlo definovanú šírku respektíve výšku mriežky. Na to si musím definovať premenné:
+\begtt
+\newdimen\curr % zaplnená vzdialenosť
+\newcount\linecount 
+\endtt
+V hlavnom makre teda len raz zavolám obe vedľajšie. Predtým ale nastavím hodnoty premien na nulu.
+\begtt
+\linecount=0 \curr=0pt\vertical
+\linecount=0 \curr=0pt\horizontal
+\endtt
+\secc Cyklus
+Každým zavolaním vedľajšieho makra sa zdvihne "\curr" o "\x" prípadne "\y" až dokým veľkosť "\curr" neprekročí "\w" respektíve "\h". Toto chovanie docielim jednoduchov podmienkou, kvôli ktorej museli byť "\w" a "\h" definované pomocou "\newdimen":
+\begtt
+\def\vertical {
+  \ifnum\curr<\w
+    \advance\curr\x
+    \vertical
+  \fi
+}
+\endtt
+V nútri cyklu chem docieliť rozličné správanie pre každú desiatu čiaru pre lepšiu viditeľnosť pri používaní. Pridám teda ešte "\newcount\blockcount", ktorý tiež nastavím pred volaním vedľajšieho makra na nulu. Do predošlej podmienky vložím ešte jednu. Tá overuje či je "\linecount" násobok 10.
+\begtt
+\newcount\temp \temp=\blockcount \multiply\temp10
+  \ifnum\linecount =\temp
+    \global\advance\blockcount1
+    % každá 10 čiara
+  \else
+    % ostatné čiary
+  \fi
+\endtt
+\secc Čiary a čísla
+Princíp vypisovania čiar na správne miesto spočíva v tom že vždy po vypísaní čiary sa vrátim na miesto kde som vypisovať začal. Pred čiarov vypíšem medzeru "\curr" ako "\hskip" alebo "\vskip" poľa toho v ktorom vedľajšom makre som. To zaručí správne rozmiestnenie medzi čiarami. Návrat po výpise zaručím nulovým "\hbox"om a "\vbox"om vnorenými do seba a príkazmi "\vss" a "\hss" na konci. Výpis čísla je veľmi podobný. Prvá v poradí je ale záporná medzera čo znamená že číslo bude vyčnievať. Celé "\vertical" bude vyzerať takto:
+\begtt
+\def\vertical {\noindent
+  \ifnum\curr<\w
+    \newcount\temp \temp=\blockcount \multiply\temp10
+    \hbox to0pt{\hskip\left\hskip\curr\vbox to0pt{\vskip\top\noindent
+      \ifnum\linecount =\temp
+        \global\advance\blockcount1
+        \newdimen\largerline \largerline=\h
+        \advance\largerline\baselineskip
+        \vbox to0pt{\vss\noindent\hskip2pt\the\linecount\vskip1pt}%
+        \vskip-\baselineskip\noindent\vrule height\largerline width 1pt
+      \else
+        \vrule height\h width 0.1pt
+      \fi
+    \vss}\hss}%
+    \advance\linecount1
+    \advance\curr\x
+    \vertical
+  \fi
+}
+\endtt
+Makro "\horizontal" bude vyzerať takmer identicky (viz príloha \ref[code]).
 
-
+\sec Výpis na každú stranu
+Doterajšie makro by šlo použiť samostatne na prvú stránku bez zmeny textu, kedže sa po každej čiare vraciame na začiatok. To by však muselo byť "\grid" vždy na začiatku každej strany. Začiatok strany ale vieme určiť len pri tej prvej. Preto som sa rozhodol využiť token list "\_pgbackground" z \OpTeX{}u. To prichádza s nevýhodami spomenutými v sekcii \ref[background]. K hlavnému makru teda pridám:
+\begtt
+\_pgbackground={\Green
+\blockcount=0 \linecount=0 \curr=0pt\vertical
+\blockcount=0 \linecount=0 \curr=0pt\horizontal}%
+}
+\endtt
+Farbu mriežky som zvolil zelenú aby som napodobnil vzhľad milimetrového papieru.
 \app Ukážky použitia makra
 \ref[implicit] vznikne príkazom:
 \begtt
@@ -100,4 +187,64 @@ Na začiatok si treba ozrejmiť čo by malo makro robiť. Preto zhrniem predpokl
 \cinspic ukazka3.pdf
 \caption/f Ukážka využitia mriežky na celú stranu.
 \endinsert
+
+\app[code] Kód makra
+\begtt
+\newdimen\h 
+\newdimen\w 
+\newdimen\curr 
+\newcount\linecount 
+\newcount\blockcount
+\def\grid#1,#2(#3,#4,#5,#6){%
+  \if$#1$ \def\x{1mm} \else \def\x{#1} \fi
+  \if$#2$ \def\y{1mm} \else \def\y{#2} \fi
+  \if$#3$ \def\left{\hoffset} \else \def\left{#3} \fi
+  \if$#4$ \def\top{\voffset} \else \def\top{#4} \fi
+  \if$#5$ \w=\hsize \else \w=#5 \fi
+  \if$#6$ \h=\vsize \else \h=#6 \fi
+  \_pgbackground={\Green
+    \blockcount=0 \linecount=0 \curr=0pt\vertical
+    \blockcount=0 \linecount=0 \curr=0pt\horizontal}%
+}
+\def\vertical {\noindent
+  \ifnum\curr<\w
+    \newcount\temp \temp=\blockcount \multiply\temp10
+    \hbox to0pt{\hskip\left\hskip\curr\vbox to0pt{\vskip\top\noindent
+      \ifnum\linecount =\temp
+        \global\advance\blockcount1
+        \newdimen\largerline \largerline=\h
+        \advance\largerline\baselineskip
+        \vbox to0pt{\vss\noindent\hskip2pt\the\linecount\vskip1pt}%
+        \vskip-\baselineskip\noindent\vrule height\largerline width 1pt
+      \else
+        \vrule height\h width 0.1pt
+      \fi
+    \vss}\hss}%
+    \advance\linecount1
+    \advance\curr\x
+    \vertical
+  \fi
+}
+\def\horizontal {\noindent
+  \ifnum\curr<\h
+    \newcount\temp \temp=\blockcount \multiply\temp10
+    \hbox to0pt{\hskip\left \vbox to0pt{\vskip\top\vskip\curr
+      \ifnum\linecount =\temp
+        \global\advance\blockcount1
+        \newdimen\largerline \largerline=\w 
+        \advance\largerline\baselineskip
+        \hbox to0pt{\hskip-\baselineskip
+        \vbox to0pt{\hrule width\largerline height 1pt\vss}\hss}%
+        \vbox to0pt{\vskip-\baselineskip\vskip2pt
+        \hbox to0pt{\hss\noindent\the\linecount\hskip1pt}\vss}%
+      \else
+        \hrule width\w height 0.1pt
+      \fi
+    \vss}\hss}%
+    \advance\linecount1
+    \advance\curr\y
+    \horizontal
+  \fi
+}
+\endtt
 \bye
