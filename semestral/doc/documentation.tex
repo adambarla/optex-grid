@@ -1,0 +1,103 @@
+\input ctustyle3
+\worktype [O/SK]
+\faculty {F8}
+\department {Katedra teoretické informatiky}
+\workname{Semestrálna práca na predmet BI-TEX}
+\title {Mriežka na pozadí dokumentu k meraniu sadzby v rôznych jednotkách}
+\author {Adam Barla}
+\date {LS 2020/2021}
+\abstractEN {This document describes use and development of \OpTeX{} macro. This macro creates a grid on the background of each page of the document. The size and placement of the grid can be defined by the user. Grid keeps the Typesetting of the original document. It is designed to help with measuring a relative and the absolute positon of texts, pictures, charts and other elements on page.}
+\abstractSK {Tento dokument popisuje použitie a vývoj makra pre \OpTeX{}. Toto makro vytvorí na pozadí každej strany dokumentu mriežku ľubovoľnej velkosti s ľubobolným umiestnením. Mriežka nezasahuje do pôvodnej sadzby dokumentu. Pomocou tejto mriežky je jednoduché odčítať vzájomnú ale aj absolutnú polohu všetkých textov, obrázkov, tabuliek a iných elementov na stránke.}
+% \declaration {Prohlašuji, že jsem se neflákal.}
+\makefront
+\draft
+\chap Úvod
+Program \TeX{} je používaný v akademickom prostredí najmä vďaka kvalite matematickej sadzby. Vyniká však aj v mnohých iných oblastiach. Jednou z nich je napríklad algoritmus riadkových zlomov. K tejto prvotriednosti prispieva to, že \TeX{} spracúva celý zdrojový text naraz. Autor tak vidí finálnu sadzbu až po dobehnutí programu. Pri ladení konečného vzhľadu textu je teda potrebné opätovne spúšťať program a hladať prípadné chyby. To môže byť spočiatku na nového užívateľa priveľa. Hlavne ak je zvyknutý na textové editory, ako napríklad MS Word, v ktorých sú zmeny viditeľné ihneď. Táto práca popisuje makro pre \OpTeX{} určené ne hľadanie príčin nesprávneho umiestnenia sadzby, prípadne zisťovania presnej pozície textu v dokumente.
+
+\chap Manuál
+Táto kapitola slúži ako návod na získanie požadovaných výsledkov pri používaní makra.
+Mriežka samotná je tvorená vertikálnymi a horizontálnymi čiarami, ktorých rozostup je možné definovať ľubovoľnou jednotkou v \TeX{}u. Na vrchnej a ľavej strane mriežky je každá desiata čiara číslovaná. Číslované čiary sú navyše predĺžené a hrubšie pre prehľadné odčítavanie vzdialeností. Nezávisle na hrúbke sa vzdialenosť od počiatku mriežky odčítava na ľavej respektíve hornej strane vertikálnej respektíve horizontálnej čiary.
+\sec Implicitné použitie
+Po stiahnutí makra "mriezka.tex" ho stačí vložiť do vášho dokumentu a aktivovať. Toto docielite použitím týchto dvoch príkazov:
+\begtt
+\input mriezka.tex
+\grid ,(,,,)
+\endtt
+Výsledkom bude mriežka pokrývajúca celú stranu okrem okrajov. Do tých prečnieva len číslovanie každej desiatej čiary na vertikálnej aj horizontálnej ose. Ak sú vrchný a ľavý okraj nulové nebude číslovanie viditeľé. Ak by ste ho predsa chceli vidieť aj na úkor prípadného prekryvu s textom budete musieť definovať parametre, o ktorých hovorím v ďalšej kapitole. Rozostupy medzi vertikálnymi a horizontálnymi čiarami sú rovnaké a majú velkosť $1mm$. Ukážku takéhoto použitia nájdete v prílohe \ref[implicit].
+
+\sec Definovanie parametrov
+Samozrejme ak by bolo možné vytvoriť len mriežku s dielikmi veľkými $1mm$ tak by to bolo veľmi nepraktické. Preto je možné do veľkej miery upraviť jej vzhľad pomocou parametrov. Prvé dva parametre pred zátvorkou udávajú velkosť jedného políčka v mriežke. Parametre v zátvorke definujú zaradom: ľavé odsadenie, vrchné odsadenie, šírku a výšku mriežky. Takže výsledná definícia vyzerá takto:
+\begtt
+\grid <horizontal spacing>,<vertical spacing>(<left margin>,<top margin>,
+<horizontal size>,<vertical size>)
+\endtt
+Všetky parametre môžte zadať v ľubovolných jednotkách podporovaných \TeX{}om.
+\begtt
+\grid 1cm,10ex(0.5in,2em,400pt,20cm)
+\endtt
+Taktiež môžete parametre definovať aj inými sekvenciami:
+\begtt
+\grid \parindent ,\baselineskip(\hoffset ,\voffset ,\hsize ,\vsize)
+\endtt
+Výsledok tohto zápisu môžte vidieť v prílohe \ref[parametric]. Rovnaký výsledok ako pri použití implicitnej definície získate napísaním:
+\begtt
+\grid 1mm,1mm(\hoffset ,\voffset ,\hsize ,\vsize)
+\endtt
+Pri definícii parametrov môžte nechať niektoré z nich aj prázdne a tým bude ich hodnota nastavená na implicitnú.
+
+\sec Možné vylepšenia
+Povedal by som že makro má dva nedostaky. Oba sa vyskytujú ib pri špecifickom využití.
+
+\secc Pozadie
+Pri implementácii je využitý token list z \OpTeX{}u "\pgbackground". To znamená že ak by sme chceli určiť polohu niečoho na pozadí, definovanom práve týmto zoznamom, nebude to možné. Podľa poradia definícií bude na pozadí buď mriežka alebo pôvodné pozadie. Nikdy nie oba naraz. 
+
+Ako možné vylepšenie by makro mohlo definovať vlastný token list, ktorý by sa zobrazoval rovnako ako "\pgbackground".
+
+\secc Celá strana
+Ako náhle zvolíme ľavé a vrchné odsadenia ako nulové prídeme o číslovanie liniek. Toto je vidieť v prílohe \ref[whole],kde je mriežka nastavená aby pokrývala celú stranu. Vďaka hrubým čiaram nejde o taký závažný problem. 
+
+Jedným z riešení je výpis číslovania na všetky štyri strany. To však nemení viditeľnosť číslovania v ukážke \ref[whole]. Ďalej by bolo možné vypisovať číslovanie malým písmom dovnútra mriežky. To by ale potencionálne znemožnilo odčítanie presnej pozície, kedže by sa texty prekrývali.
+
+\chap Implementácia
+Táto kapitola sa venuje postupu akým som makro vytvoril. Popíšem čo ma viedlo k rozhodnutiam, ktoré som spravil. 
+\sec Predpoklady
+Na začiatok si treba ozrejmiť čo by malo makro robiť. Preto zhrniem predpoklady, ktoré som pri tvorbe mal.Makro by malo byť jednoduché na použitie. To 
+\sec Výška a šírka
+\begtt
+\ifnum\curr<\w
+\endtt
+
+
+
+\app Ukážky použitia makra
+\ref[implicit] vznikne príkazom:
+\begtt
+\grid ,(,,,)
+\endtt
+\ref[parametric] vznikne príkazom:
+\begtt
+\grid \parindent ,\baselineskip(\hoffset ,\voffset ,\hsize ,\vsize)
+\endtt
+\ref[whole] vznikne príkazom:
+\begtt
+\grid 10pt,10pt(0pt,0pt,\pdfpagewidth ,\pdfpageheight)
+\endtt
+\midinsert
+\picw=16cm 
+\clabel[implicit]{Ukážka implicitného použitia mriežky.}
+\cinspic ukazka1.pdf
+\caption/f Ukážka implicitného použitia mriežky.
+\endinsert
+\midinsert
+\picw=16cm 
+\clabel[parametric]{Ukážka použitia parametrov.}
+\cinspic ukazka2.pdf
+\caption/f Ukážka použitia parametrov.
+\endinsert
+\midinsert
+\picw=16cm 
+\clabel[whole]{Ukážka využitia mriežky na celú stranu.}
+\cinspic ukazka3.pdf
+\caption/f Ukážka využitia mriežky na celú stranu.
+\endinsert
+\bye
