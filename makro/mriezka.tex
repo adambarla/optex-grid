@@ -3,6 +3,8 @@
 \newdimen\curr 
 \newcount\linecount 
 \newcount\blockcount
+\newdimen\largerline 
+\newcount\temp 
 % horizontal spacing size, vertical spacing size(left margin, top margin, width, height)
 \def\grid#1,#2(#3,#4,#5,#6){% defining implicit parameters
   \if$#1$ \def\x{1mm} \else \def\x{#1} \fi
@@ -11,17 +13,19 @@
   \if$#4$ \def\top{\voffset} \else \def\top{#4} \fi
   \if$#5$ \w=\hsize \else \w=#5 \fi
   \if$#6$ \h=\vsize \else \h=#6 \fi
+  
   \_pgbackground={\Green
+    \largerline=\h \advance\largerline\baselineskip
     \blockcount=0 \linecount=0 \curr=0pt\vertical
+    \largerline=\w \advance\largerline\baselineskip
     \blockcount=0 \linecount=0 \curr=0pt\horizontal}%
 }
 \def\vertical {\noindent
   \ifnum\curr<\w
-    \newcount\temp \temp=\blockcount \multiply\temp10
+    \temp=\blockcount \multiply\temp10
     \hbox to0pt{\hskip\left\hskip\curr\vbox to0pt{\vskip\top\noindent
       \ifnum\linecount =\temp
         \global\advance\blockcount1
-        \newdimen\largerline \largerline=\h \advance\largerline\baselineskip
         \vbox to0pt{\vss\noindent\hskip2pt\the\linecount\vskip1pt}%
         \vskip-\baselineskip\noindent\vrule height\largerline width 1pt
       \else
@@ -30,16 +34,15 @@
     \vss}\hss}%
     \advance\linecount1
     \advance\curr\x
-    \vertical
+    \ea\vertical
   \fi
 }
 \def\horizontal {\noindent
   \ifnum\curr<\h
-    \newcount\temp \temp=\blockcount \multiply\temp10
+    \temp=\blockcount \multiply\temp10
     \hbox to0pt{\hskip\left \vbox to0pt{\vskip\top\vskip\curr
       \ifnum\linecount =\temp
         \global\advance\blockcount1
-        \newdimen\largerline \largerline=\w \advance\largerline\baselineskip
         \hbox to0pt{\hskip-\baselineskip\vbox to0pt{\hrule width\largerline height 1pt\vss}\hss}%
         \vbox to0pt{\vskip-\baselineskip\vskip2pt\hbox to0pt{\hss\noindent\the\linecount\hskip1pt}\vss}%
       \else
@@ -48,6 +51,6 @@
     \vss}\hss}%
     \advance\linecount1
     \advance\curr\y
-    \horizontal
+    \ea\horizontal
   \fi
 }
