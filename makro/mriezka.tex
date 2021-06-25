@@ -4,7 +4,6 @@
 \newcount\linecount 
 \newcount\blockcount
 \newdimen\largerline 
-\newcount\temp 
 % horizontal spacing size, vertical spacing size(left margin, top margin, width, height)
 \def\grid#1,#2(#3,#4,#5,#6){% defining implicit parameters
   \if$#1$ \def\x{1mm} \else \def\x{#1} \fi
@@ -22,10 +21,9 @@
 }
 \def\vertical {\noindent
   \ifnum\curr<\w
-    \temp=\blockcount \multiply\temp10
     \hbox to0pt{\hskip\left\hskip\curr\vbox to0pt{\vskip\top\noindent
-      \ifnum\linecount =\temp
-        \global\advance\blockcount1
+      \ifnum\linecount =\blockcount
+        \global\advance\blockcount10
         \vbox to0pt{\vss\noindent\hskip2pt\the\linecount\vskip1pt}%
         \vskip-\baselineskip\noindent\vrule height\largerline width 1pt
       \else
@@ -39,10 +37,9 @@
 }
 \def\horizontal {\noindent
   \ifnum\curr<\h
-    \temp=\blockcount \multiply\temp10
     \hbox to0pt{\hskip\left \vbox to0pt{\vskip\top\vskip\curr
-      \ifnum\linecount =\temp
-        \global\advance\blockcount1
+      \ifnum\linecount =\blockcount
+        \global\advance\blockcount10
         \hbox to0pt{\hskip-\baselineskip\vbox to0pt{\hrule width\largerline height 1pt\vss}\hss}%
         \vbox to0pt{\vskip-\baselineskip\vskip2pt\hbox to0pt{\hss\noindent\the\linecount\hskip1pt}\vss}%
       \else
