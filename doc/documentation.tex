@@ -3,7 +3,7 @@
 \faculty {F8}
 \department {Katedra teoretické informatiky}
 \workname{Semestrálna práca na predmet BI-TEX}
-\title {Mriežka na pozadí dokumentu k meraniu sadzby v rôznych jednotkách}
+\title {Mriežka na pozadí dokumentu \nl k meraniu sadzby v rôznych jednotkách}
 \author {Adam Barla}
 \date {LS 2020/2021}
 \abstractEN {This document describes use and development of \OpTeX{} macro. This macro creates a grid on the background of each page of the document. The size and placement of the grid can be defined by the user. Grid keeps the Typesetting of the original document. It is designed to help with measuring a relative and the absolute positon of texts, pictures, charts and other elements on the page.}
@@ -86,8 +86,8 @@ Rozpoznanie prázdneho parametra robím s predpokladom, že v parametri nikdy ne
 \begtt
   \if$#1$ \def\x{1mm} \else \def\x{#1} \fi
   \if$#2$ \def\y{1mm} \else \def\y{#2} \fi
-  \if$#3$ \def\left{\hoffset} \else \def\left{#3} \fi
-  \if$#4$ \def\top{\voffset} \else \def\top{#4} \fi
+  \if$#3$ \def\offsetLeft{\hoffset} \else \def\offsetLeft{#3} \fi
+  \if$#4$ \def\offsetTop{\voffset} \else \def\offsetTop{#4} \fi
   \if$#5$ \w=\hsize \else \w=#5 \fi
   \if$#6$ \h=\vsize \else \h=#6 \fi
 \endtt
@@ -126,7 +126,8 @@ Princíp vypisovania čiar na správne miesto spočíva v tom že vždy po vypí
 \begtt
 \def\vertical {\noindent
   \ifnum\curr<\w
-    \hbox to0pt{\hskip\left\hskip\curr\vbox to0pt{\vskip\top\noindent
+    \hbox to0pt{\hskip\offsetLeft\hskip\curr
+      \vbox to0pt{\vskip\offsetTop\noindent
       \ifnum\linecount =\blockcount
         \global\advance\blockcount10
         \vbox to0pt{\vss\noindent\hskip2pt\the\linecount\vskip1pt}%
@@ -196,8 +197,8 @@ Farbu mriežky som zvolil zelenú aby som napodobnil vzhľad milimetrového papi
 \def\grid#1,#2(#3,#4,#5,#6){%
   \if$#1$ \def\x{1mm} \else \def\x{#1} \fi
   \if$#2$ \def\y{1mm} \else \def\y{#2} \fi
-  \if$#3$ \def\left{\hoffset} \else \def\left{#3} \fi
-  \if$#4$ \def\top{\voffset} \else \def\top{#4} \fi
+  \if$#3$ \def\offsetLeft{\hoffset} \else \def\offsetLeft{#3} \fi
+  \if$#4$ \def\offsetTop{\voffset} \else \def\offsetTop{#4} \fi
   \if$#5$ \w=\hsize \else \w=#5 \fi
   \if$#6$ \h=\vsize \else \h=#6 \fi
   
@@ -209,7 +210,8 @@ Farbu mriežky som zvolil zelenú aby som napodobnil vzhľad milimetrového papi
 }
 \def\vertical {\noindent
   \ifnum\curr<\w
-    \hbox to0pt{\hskip\left\hskip\curr\vbox to0pt{\vskip\top\noindent
+    \hbox to0pt{\hskip\offsetLeft\hskip\curr
+      \vbox to0pt{\vskip\offsetTop\noindent
       \ifnum\linecount =\blockcount
         \global\advance\blockcount10
         \vbox to0pt{\vss\noindent\hskip2pt\the\linecount\vskip1pt}%
@@ -225,7 +227,8 @@ Farbu mriežky som zvolil zelenú aby som napodobnil vzhľad milimetrového papi
 }
 \def\horizontal {\noindent
   \ifnum\curr<\h
-    \hbox to0pt{\hskip\left \vbox to0pt{\vskip\top\vskip\curr
+    \hbox to0pt{\hskip\offsetLeft
+      \vbox to0pt{\vskip\offsetTop\vskip\curr
       \ifnum\linecount =\blockcount
         \global\advance\blockcount10
         \hbox to0pt{\hskip-\baselineskip
