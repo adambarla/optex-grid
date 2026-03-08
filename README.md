@@ -1,28 +1,28 @@
-# Mriežka na pozadí dokumentu k meraniu sadzby v rôznych jednotkách
+# Document Background Grid for Measuring Typesetting in Various Units
 
-Semestrálna práca na předmět BI-TEX, Adam Barla, LS 2020/2021
+Semester project for the BI-TEX course, Adam Barla, SS 2020/2021
 
-Táto práca je určená ako pomôcka pri umiestňovaní sadzby. Ide o makro makro pre `OpTeX` určené ne hľadanie príčin nesprávneho umiestnenia sadzby, prípadne zisťovania presnej pozície textu v dokumente.
-Makro vytvorí mriežku na pozadí každej stránky vašeho dokumentu. Pritom nemení doterajšie rozloženie textu. Prípadného pozadia definovaného v `\pgbackground` sa ale prepíše. Veľkosť políčok aj veľkosť samotnej mriežky si môžte definovať sami.
+This project is a tool for positioning typesetting. It is a macro for `OpTeX` designed to help find causes of incorrect typesetting placement or to determine the exact position of text in a document.
+The macro creates a grid on the background of every page of your document without altering the existing text layout. However, any existing background defined in `\pgbackground` will be overwritten. You can define both the cell size and the overall grid size yourself.
 
-## Dokumentácia
+## Documentation
 
-Podrobný popis použitia a tvorby makra je v súbore `documentation.pdf`, ktorý nájdete v priečinku `\doc`. Môžeteho vygenerovať príkazom:
+A detailed description of the macro's usage and development can be found in the file `documentation.pdf`, located in the `\doc` folder. You can generate it with the command:
 
 `optex documentation.tex`
 
-V rovnakom priečinku nájdete aj tri ukážky použita makra. Bližšie sú popísané v dokumentácii.
+In the same folder, you will also find three usage examples. They are described in more detail in the documentation.
 
-## Stručné použitie
+## Quick Usage
 
-Definíciu makra nájdete v súbore `mriezka.tex` v priečinku `makro`. Tento súbor musíte priložiť k svojmu dokumentu pomocou `\include mriezka.tex`. Potom ho môžte použiť s defaultnými nastaveniami príkazom:
+The macro definition can be found in the file `grid.tex` in the `macro` folder. You must include this file in your document using `\include grid.tex`. Then you can use it with default settings by running:
 
 `\grid ,(,,,)`
 
-alebo môžte definovať parametre mriežky:
+or you can define the grid parameters:
 
 `\grid <horizontal spacing>,<vertical spacing>(<left margin>,<top margin>, <horizontal size>,<vertical size>)`
 
-Pri definícii parametrov môžte nechať niektoré z nich aj prázdne a tým bude ich hodnota nastavená na implicitnú. Parametre udávajte s jednotkami definovanými v `TeX`u (pt, in, mm, cm, atď.).
+When defining parameters, you can leave some of them empty, in which case they will be set to their default values. Specify parameters with units defined in `TeX` (pt, in, mm, cm, etc.).
 
-Ďalej sa v priečinku `makro` nachádza testovací text, na ktorom sú predvedené ukážky v dokumentácii.
+The `macro` folder also contains a test text used for the examples shown in the documentation.
