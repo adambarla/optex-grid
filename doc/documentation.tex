@@ -1,88 +1,88 @@
 \input ctustyle3
-\worktype [O/SK]
+\worktype [O/EN]
 \faculty {F8}
-\department {Katedra teoretické informatiky}
-\workname{Semestrálna práca na predmet BI-TEX}
-\title {Mriežka na pozadí dokumentu \nl k meraniu sadzby v rôznych jednotkách}
+\department {Department of Theoretical Computer Science}
+\workname{Semester project for the BI-TEX course}
+\title {Document Background Grid \nl for Measuring Typesetting in Various Units}
 \author {Adam Barla}
-\date {LS 2020/2021}
+\date {SS 2020/2021}
 \abstractEN {This document describes use and development of \OpTeX{} macro. This macro creates a grid on the background of each page of the document. The size and placement of the grid can be defined by the user. Grid keeps the Typesetting of the original document. It is designed to help with measuring a relative and the absolute positon of texts, pictures, charts and other elements on the page.}
 \abstractSK {Tento dokument popisuje použitie a vývoj makra pre \OpTeX{}. Toto makro vytvorí na pozadí každej strany dokumentu mriežku ľubovoľnej velkosti s ľubobolným umiestnením. Mriežka nezasahuje do pôvodnej sadzby dokumentu. Pomocou tejto mriežky je jednoduché odčítať vzájomnú ale aj absolutnú polohu všetkých textov, obrázkov, tabuliek a iných elementov na stránke.}
-% \declaration {Prohlašuji, že jsem se neflákal.}
+% \declaration {I declare that I did not slack off.}
 \makefront
 
-\chap Úvod
-Program \TeX{} je používaný v akademickom prostredí najmä vďaka kvalite matematickej sadzby. Vyniká však aj v mnohých iných oblastiach. Jednou z nich je napríklad algoritmus riadkových zlomov. K tejto prvotriednosti prispieva to, že \TeX{} spracúva celý zdrojový text naraz. Autor tak vidí finálnu sadzbu až po dobehnutí programu. Pri ladení konečného vzhľadu textu je teda potrebné opätovne spúšťať program a hladať prípadné chyby. To môže byť spočiatku na nového užívateľa priveľa. Hlavne ak je zvyknutý na textové editory, ako napríklad MS Word, v ktorých sú zmeny viditeľné ihneď. Táto práca popisuje makro pre \OpTeX{} určené ne hľadanie príčin nesprávneho umiestnenia sadzby, prípadne zisťovania presnej pozície textu v dokumente.
+\chap Introduction
+The \TeX{} program is used in academic environments primarily thanks to the quality of its mathematical typesetting. However, it excels in many other areas as well. One of them, for example, is the line-breaking algorithm. What contributes to this excellence is that \TeX{} processes the entire source text at once. The author therefore only sees the final typesetting after the program finishes running. When fine-tuning the final appearance of the text, it is necessary to repeatedly re-run the program and look for possible errors. This can initially be overwhelming for a new user, especially if they are accustomed to text editors such as MS Word, where changes are visible immediately. This work describes a macro for \OpTeX{} designed to help find causes of incorrect typesetting placement or to determine the exact position of text in a document.
 
-\chap Manuál
-Táto kapitola slúži ako návod na získanie požadovaných výsledkov pri používaní makra.
-Mriežka samotná je tvorená vertikálnymi a horizontálnymi čiarami, ktorých rozostup je možné definovať ľubovoľnou jednotkou v \TeX{}u. Na vrchnej a ľavej strane mriežky je každá desiata čiara číslovaná. Číslované čiary sú navyše predĺžené a hrubšie pre prehľadné odčítavanie vzdialeností. Nezávisle na hrúbke sa vzdialenosť od počiatku mriežky odčítava na ľavej respektíve hornej strane vertikálnej respektíve horizontálnej čiary.
-\sec Implicitné použitie
-Po stiahnutí makra "mriezka.tex" ho stačí vložiť do vášho dokumentu a aktivovať. Toto docielite použitím týchto dvoch príkazov:
+\chap Manual
+This chapter serves as a guide for achieving the desired results when using the macro.
+The grid itself consists of vertical and horizontal lines whose spacing can be defined using any unit in \TeX{}. On the top and left sides of the grid, every tenth line is numbered. Numbered lines are also extended and thicker for convenient distance reading. Regardless of thickness, the distance from the grid's origin is read on the left or top side of the vertical or horizontal line, respectively.
+\sec Default Usage
+After downloading the macro "grid.tex", simply include it in your document and activate it. You can achieve this using these two commands:
 \begtt
-\input mriezka.tex
+\input grid.tex
 \grid ,(,,,)
 \endtt
-Výsledkom bude mriežka pokrývajúca celú stranu okrem okrajov. Do tých prečnieva len číslovanie každej desiatej čiary na vertikálnej aj horizontálnej ose. Ak sú vrchný a ľavý okraj nulové nebude číslovanie viditeľé. Ak by ste ho predsa chceli vidieť aj na úkor prípadného prekryvu s textom budete musieť definovať parametre, o ktorých hovorím v ďalšej kapitole. Rozostupy medzi vertikálnymi a horizontálnymi čiarami sú rovnaké a majú velkosť $1mm$. Ukážku takéhoto použitia nájdete v prílohe \ref[implicit].
+The result will be a grid covering the entire page except for the margins. Only the numbering of every tenth line on both the vertical and horizontal axes extends into the margins. If the top and left margins are zero, the numbering will not be visible. If you still want to see it even at the cost of possible overlap with the text, you will need to define the parameters discussed in the next section. The spacing between vertical and horizontal lines is the same and has a size of $1mm$. An example of such usage can be found in Appendix \ref[implicit].
 
-\sec Definovanie parametrov
-Samozrejme ak by bolo možné vytvoriť len mriežku s dielikmi veľkými $1mm$ tak by to bolo veľmi nepraktické. Preto je možné do veľkej miery upraviť jej vzhľad pomocou parametrov. Prvé dva parametre pred zátvorkou udávajú velkosť jedného políčka v mriežke. Parametre v zátvorke definujú zaradom: ľavé odsadenie, vrchné odsadenie, šírku a výšku mriežky. Takže výsledná definícia vyzerá takto:
+\sec Defining Parameters
+Of course, if it were only possible to create a grid with $1mm$ divisions, it would be very impractical. Therefore, the grid's appearance can be extensively customized using parameters. The first two parameters before the parenthesis specify the size of one cell in the grid. The parameters inside the parenthesis define, in order: left offset, top offset, width, and height of the grid. So the resulting definition looks like this:
 \begtt
 \grid <horizontal spacing>,<vertical spacing>(<left margin>,<top margin>,
 <horizontal size>,<vertical size>)
 \endtt
-Všetky parametre môžte zadať v ľubovolných jednotkách podporovaných \TeX{}om.
+All parameters can be specified in any units supported by \TeX{}.
 \begtt
 \grid 1cm,10ex(0.5in,2em,400pt,20cm)
 \endtt
-Taktiež môžete parametre definovať aj inými sekvenciami:
+You can also define parameters using other sequences:
 \begtt
 \grid \parindent ,\baselineskip(\hoffset ,\voffset ,\hsize ,\vsize)
 \endtt
-Výsledok tohto zápisu môžte vidieť v prílohe \ref[parametric]. Rovnaký výsledok ako pri použití implicitnej definície získate napísaním:
+The result of this notation can be seen in Appendix \ref[parametric]. The same result as with the default definition can be obtained by writing:
 \begtt
 \grid 1mm,1mm(\hoffset ,\voffset ,\hsize ,\vsize)
 \endtt
-Pri definícii parametrov môžte nechať niektoré z nich aj prázdne a tým bude ich hodnota nastavená na implicitnú.
+When defining parameters, you can leave some of them empty, in which case their value will be set to the default.
 
-\sec Možné vylepšenia
-Povedal by som že makro má dva nedostaky. Oba sa vyskytujú ib pri špecifickom využití.
+\sec Possible Improvements
+I would say the macro has two shortcomings. Both occur only with specific usage.
 
-\secc[background] Pozadie
-Pri implementácii je využitý token list z \OpTeX{}u "\pgbackground". To znamená že ak by sme chceli určiť polohu niečoho na pozadí, definovanom práve týmto zoznamom, nebude to možné. Podľa poradia definícií bude na pozadí buď mriežka alebo pôvodné pozadie. Nikdy nie oba naraz. 
+\secc[background] Background
+The implementation uses the token list from \OpTeX{} "\pgbackground". This means that if we wanted to determine the position of something on a background defined by this list, it would not be possible. Depending on the order of definitions, the background will contain either the grid or the original background---never both at the same time.
 
-Ako možné vylepšenie by makro mohlo definovať vlastný token list, ktorý by sa zobrazoval rovnako ako "\pgbackground".
+As a possible improvement, the macro could define its own token list that would be displayed in the same way as "\pgbackground".
 
-\secc Celá strana
-Ako náhle zvolíme ľavé a vrchné odsadenia ako nulové prídeme o číslovanie liniek. Toto je vidieť v prílohe \ref[whole],kde je mriežka nastavená aby pokrývala celú stranu. Vďaka hrubým čiaram nejde o taký závažný problem. 
+\secc Full Page
+As soon as we set the left and top offsets to zero, we lose the line numbering. This can be seen in Appendix \ref[whole], where the grid is set to cover the entire page. Thanks to the thick lines, this is not a very serious problem.
 
-Jedným z riešení je výpis číslovania na všetky štyri strany. To však nemení viditeľnosť číslovania v ukážke \ref[whole]. Ďalej by bolo možné vypisovať číslovanie malým písmom dovnútra mriežky. To by ale potencionálne znemožnilo odčítanie presnej pozície, kedže by sa texty prekrývali.
+One solution would be to display the numbering on all four sides. However, this does not change the visibility of the numbering in example \ref[whole]. Another option would be to display the numbering in small font inside the grid. But this would potentially make it impossible to read exact positions, since the texts would overlap.
 
-\chap Implementácia
-Táto kapitola sa venuje postupu akým som makro vytvoril. Popíšem čo ma viedlo k rozhodnutiam, ktoré som spravil. Na začiatok si treba ozrejmiť čo by malo makro robiť. Preto zhrniem predpoklady, ktoré som pri tvorbe mal. 
+\chap Implementation
+This chapter describes the process by which I created the macro. I will describe what led me to the decisions I made. First, it is necessary to clarify what the macro should do. Therefore, I will summarize the assumptions I had during development.
 \begitems
-* jednoduché na použitie
-* nastaviteľné parametre
-* nezasahovať do textu
-* prehľadné
+* easy to use
+* configurable parameters
+* does not interfere with the text
+* clear and readable
 \enditems
-\sec Rozhranie
-Kedže mi išlo o jednoduchosť stanovil som si že mriežka bude generovaná jedným príkazom s parametrami. Tých som zvolil 6. 
+\sec Interface
+Since I was aiming for simplicity, I decided that the grid would be generated by a single command with parameters. I chose 6 of them.
 
-Najdôložitejšie je nastavenie veľkosti políčok v mriežke, kedže bez tejto vlastnosti je mriežka zbytočná. To zariadia prvé dva parametre. Rovnako dôležitá je pozícia počiatku mriežky, vďaka ktorému môžme určiť vzdialenosti od ľubovolného miesta na strane jednoducho. Keby bol počiatok fixný museli  by sme určiť vzdialenosť dvoch bodov od povedzme kraju papiera a potom tieto vzdialenosti odčítať. Na to nám treba ďalšie dva parametre.Posledné dva sú tam možno s viac estetického hladiska. Mriežka by totiž mohla vždy siahať až po koniec papiera. Pre lepšiu viditeľnosť som ale zvolil ako nastaviteľnú aj veľkosť mriežky.
-Definícia makra teda bude vyzerať takto:
+The most important thing is setting the cell size in the grid, since without this feature the grid is useless. The first two parameters handle this. Equally important is the position of the grid's origin, which allows us to easily determine distances from any point on the page. If the origin were fixed, we would have to determine the distance of two points from, say, the edge of the paper and then subtract these distances. This requires two more parameters. The last two are perhaps more of an aesthetic consideration. The grid could always extend to the edge of the paper. For better visibility, however, I chose to make the grid size configurable as well.
+The macro definition will therefore look like this:
 \begtt
 \def\grid#1,#2(#3,#4,#5,#6)
 \endtt
-\sec Implicitné hodnoty parametrov
-Parametre by mali mať nejakú implicitnú hodnotu pre jednoduchšie zaobchádzanie. Všetky parametre definujem pre použitie v pomocných markrách. Výšku a šírku budem musieť číselne porovnávať kvôli dodržaniu veľkosti mriežky. Preto pre ne definujem premenné:
+\sec Default Parameter Values
+Parameters should have some default value for easier handling. I define all parameters for use in auxiliary macros. I will need to numerically compare the height and width to ensure the grid size is respected. Therefore, I define variables for them:
 \begtt
 \newdimen\h 
 \newdimen\w 
 \endtt
-Ostatné môžem definovať pomocou "\def".
+The others can be defined using "\def".
 
-Rozpoznanie prázdneho parametra robím s predpokladom, že v parametri nikdy nebude znak "$". Čo je dobrý predpoklad, kedže "$" začína matematickú sadzbu. Ak je parameter prázdny vyústi podmienka "\if$#1$" po expanzii do rovnosti. Tam definujem implicitnú hodnotu. Pre všetky parametre vyzerajú podmientky takto.
+I detect an empty parameter with the assumption that the parameter will never contain the character "$". This is a good assumption since "$" starts math mode. If the parameter is empty, the condition "\if$#1$" will result in equality after expansion. There I define the default value. The conditions for all parameters look like this:
 \begtt
   \if$#1$ \def\x{1mm} \else \def\x{#1} \fi
   \if$#2$ \def\y{1mm} \else \def\y{#2} \fi
@@ -91,19 +91,19 @@ Rozpoznanie prázdneho parametra robím s predpokladom, že v parametri nikdy ne
   \if$#5$ \w=\hsize \else \w=#5 \fi
   \if$#6$ \h=\vsize \else \h=#6 \fi
 \endtt
-\sec Pomocné markrá
-Definujem si dve pomocné makrá pre horizontálne a vertikálne čiary. Každé z nich vypíše čiaru a zavolá samého seba. Chcem aby makro prestalo volať samé seba keď vypísalo toľko čiar s definovaným rozostupom "\x" prípadne "\y" pre vertikálne respektíve horizontálne čiary, že ďalším zavolaním by už presiahlo definovanú šírku respektíve výšku mriežky. Na to si musím definovať premenné:
+\sec Auxiliary Macros
+I define two auxiliary macros for horizontal and vertical lines. Each of them draws a line and calls itself. I want the macro to stop calling itself when it has drawn enough lines with the defined spacing "\x" or "\y" for vertical or horizontal lines respectively, such that another call would exceed the defined width or height of the grid. For this, I need to define variables:
 \begtt
-\newdimen\curr % zaplnená vzdialenosť
+\newdimen\curr % filled distance
 \newcount\linecount 
 \endtt
-V hlavnom makre teda len raz zavolám obe vedľajšie. Predtým ale nastavím hodnoty premien na nulu.
+In the main macro, I call both auxiliary macros once. Before that, I set the variable values to zero.
 \begtt
 \linecount=0 \curr=0pt\vertical
 \linecount=0 \curr=0pt\horizontal
 \endtt
-\secc Cyklus
-Každým zavolaním vedľajšieho makra sa zdvihne "\curr" o "\x" prípadne "\y" až dokým veľkosť "\curr" neprekročí "\w" respektíve "\h". Toto chovanie docielim jednoduchov podmienkou, kvôli ktorej museli byť "\w" a "\h" definované pomocou "\newdimen":
+\secc Loop
+With each call of the auxiliary macro, "\curr" increases by "\x" or "\y" until the size of "\curr" exceeds "\w" or "\h" respectively. I achieve this behavior with a simple condition, which is why "\w" and "\h" had to be defined using "\newdimen":
 \begtt
 \def\vertical {
   \ifnum\curr<\w
@@ -112,17 +112,17 @@ Každým zavolaním vedľajšieho makra sa zdvihne "\curr" o "\x" prípadne "\y"
   \fi
 }
 \endtt
-V nútri cyklu chem docieliť rozličné správanie pre každú desiatu čiaru pre lepšiu viditeľnosť pri používaní. Pridám teda ešte "\newcount\blockcount", ktorý tiež nastavím pred volaním vedľajšieho makra na nulu. Každý krát čo vypíšem hrubšiu predĺženú desiatu čiaru, zvýšim "\blockcount" o desať. Do predošlej podmienky vložím ešte jednu. Tá overuje či je "\linecount" rovný "\blockcount", vtedy vypisujem každú desiatu čiaru.
+Inside the loop, I want to achieve different behavior for every tenth line for better visibility during use. I therefore add "\newcount\blockcount", which I also set to zero before calling the auxiliary macro. Every time I draw a thicker, extended tenth line, I increase "\blockcount" by ten. I insert another condition into the previous one. This checks whether "\linecount" equals "\blockcount"---that is when every tenth line is being drawn.
 \begtt
   \ifnum\linecount =\blockcount
     \global\advance\blockcount10
-    % každá 10 čiara
+    % every 10th line
   \else
-    % ostatné čiary
+    % other lines
   \fi
 \endtt
-\secc Čiary a čísla
-Princíp vypisovania čiar na správne miesto spočíva v tom že vždy po vypísaní čiary sa vrátim na miesto kde som vypisovať začal. Pred čiarov vypíšem medzeru "\curr" ako "\hskip" alebo "\vskip" poľa toho v ktorom vedľajšom makre som. To zaručí správne rozmiestnenie medzi čiarami. Návrat po výpise zaručím nulovým "\hbox"om a "\vbox"om vnorenými do seba a príkazmi "\vss" a "\hss" na konci. Výpis čísla je veľmi podobný. Každá desiata čiara je hrubšia a predĺžená o "\baselineskip", preto pred zavolaním makra "\vertical" alebo "\horizontal" vypočítam dĺžku tejto čiary. Pre tento účel pridávam novú premennú "\newdimen\largerline". Prvá v poradí je ale záporná medzera čo znamená že číslo bude vyčnievať. Celé "\vertical" bude vyzerať takto:
+\secc Lines and Numbers
+The principle of drawing lines in the correct position is that after drawing each line, I return to the position where I started drawing. Before the line, I output a space of "\curr" as "\hskip" or "\vskip" depending on which auxiliary macro I am in. This ensures correct spacing between lines. The return after output is ensured by zero-dimension "\hbox" and "\vbox" nested inside each other and the commands "\vss" and "\hss" at the end. Printing the number is very similar. Every tenth line is thicker and extended by "\baselineskip", so before calling the "\vertical" or "\horizontal" macro, I calculate the length of this line. For this purpose, I add a new variable "\newdimen\largerline". The first in order is a negative space, which means the number will protrude. The complete "\vertical" will look like this:
 \begtt
 \def\vertical {\noindent
   \ifnum\curr<\w
@@ -142,10 +142,10 @@ Princíp vypisovania čiar na správne miesto spočíva v tom že vždy po vypí
   \fi
 }
 \endtt
-Makro "\horizontal" bude vyzerať takmer identicky (viz príloha \ref[code]).
+The "\horizontal" macro will look almost identical (see Appendix \ref[code]).
 
-\sec Výpis na každú stranu
-Doterajšie makro by šlo použiť samostatne na prvú stránku bez zmeny textu, kedže sa po každej čiare vraciame na začiatok. To by však muselo byť "\grid" vždy na začiatku každej strany. Začiatok strany ale vieme určiť len pri tej prvej. Preto som sa rozhodol využiť token list "\_pgbackground" z \OpTeX{}u. To prichádza s nevýhodami spomenutými v sekcii \ref[background]. K hlavnému makru teda pridám:
+\sec Rendering on Every Page
+The current macro could be used standalone on the first page without changing the text, since we return to the starting position after each line. However, "\grid" would then need to be placed at the beginning of every page. But we can only determine the beginning of the page for the first one. Therefore, I decided to use the token list "\_pgbackground" from \OpTeX{}. This comes with the disadvantages mentioned in Section \ref[background]. I therefore add to the main macro:
 \begtt
 \_pgbackground={\Green
     \largerline=\h \advance\largerline\baselineskip
@@ -153,40 +153,40 @@ Doterajšie makro by šlo použiť samostatne na prvú stránku bez zmeny textu,
     \largerline=\w \advance\largerline\baselineskip
     \blockcount=0 \linecount=0 \curr=0pt\horizontal}%
 \endtt
-Farbu mriežky som zvolil zelenú aby som napodobnil vzhľad milimetrového papieru.
-\app Ukážky použitia makra
-\ref[implicit] vznikne príkazom:
+I chose green for the grid color to mimic the appearance of graph paper.
+\app Examples of Macro Usage
+\ref[implicit] is generated by the command:
 \begtt
 \grid ,(,,,)
 \endtt
-\ref[parametric] vznikne príkazom:
+\ref[parametric] is generated by the command:
 \begtt
 \grid \parindent ,\baselineskip(\hoffset ,\voffset ,\hsize ,\vsize)
 \endtt
-\ref[whole] vznikne príkazom:
+\ref[whole] is generated by the command:
 \begtt
 \grid 10pt,10pt(0pt,0pt,\pdfpagewidth ,\pdfpageheight)
 \endtt
 \midinsert
 \picw=16cm 
-\clabel[implicit]{Ukážka implicitného použitia mriežky.}
-\cinspic ukazka1.pdf
-\caption/f Ukážka implicitného použitia mriežky.
+\clabel[implicit]{Example of default grid usage.}
+\cinspic example1.pdf
+\caption/f Example of default grid usage.
 \endinsert
 \midinsert
 \picw=16cm 
-\clabel[parametric]{Ukážka použitia parametrov.}
-\cinspic ukazka2.pdf
-\caption/f Ukážka použitia parametrov.
+\clabel[parametric]{Example of parameter usage.}
+\cinspic example2.pdf
+\caption/f Example of parameter usage.
 \endinsert
 \midinsert
 \picw=16cm 
-\clabel[whole]{Ukážka využitia mriežky na celú stranu.}
-\cinspic ukazka3.pdf
-\caption/f Ukážka využitia mriežky na celú stranu.
+\clabel[whole]{Example of full-page grid usage.}
+\cinspic example3.pdf
+\caption/f Example of full-page grid usage.
 \endinsert
 
-\app[code] Kód makra
+\app[code] Macro Code
 \begtt
 \newdimen\h 
 \newdimen\w 
